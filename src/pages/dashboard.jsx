@@ -25,7 +25,7 @@ const Dashboard = () => {
     try {
       const token = localStorage.getItem("token");
       // https://credit-card-be.onrender.com
-      const response = await fetch(`${apiUrl}/api/auth/cards`, {
+      const response = await fetch(`${apiUrl}/auth/cards`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await response.json();
@@ -41,7 +41,7 @@ const Dashboard = () => {
       setLoading(true);
       setError("");
       const token = localStorage.getItem("token");
-      const response = await fetch(`${apiUrl}/api/auth/card`, {
+      const response = await fetch(`${apiUrl}/auth/card`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

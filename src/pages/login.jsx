@@ -108,7 +108,7 @@ const Login = () => {
           </form>
 
           <p className="text-xs sm:text-sm mt-4 text-center">
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <span
               onClick={() => navigate("/register")}
               className="underline cursor-pointer"

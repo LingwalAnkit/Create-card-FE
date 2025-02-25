@@ -8,7 +8,6 @@ import { Button } from "../components/ui/button";
 import Navbar from "../components/layout/navbar";
 
 const Dashboard = () => {
-  const apiUrl = import.meta.env.VITE_API_URL
   const darkMode = useSelector((state) => state.theme.darkMode);
   const navigate = useNavigate();
   const [cards, setCards] = useState([]);
@@ -25,7 +24,7 @@ const Dashboard = () => {
     try {
       const token = localStorage.getItem("token");
       // https://credit-card-be.onrender.com
-      const response = await fetch(`${apiUrl}/auth/cards`, {
+      const response = await fetch(`https://credit-card-be.onrender.com/api/auth/cards`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await response.json();
@@ -41,7 +40,7 @@ const Dashboard = () => {
       setLoading(true);
       setError("");
       const token = localStorage.getItem("token");
-      const response = await fetch(`${apiUrl}/auth/card`, {
+      const response = await fetch(`https://credit-card-be.onrender.com/api/auth/card`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

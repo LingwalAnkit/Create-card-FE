@@ -8,6 +8,7 @@ import { Button } from "../components/ui/button";
 import Navbar from "../components/layout/navbar";
 
 const Dashboard = () => {
+  const apiUrl = import.meta.env.VITE_API_URL
   const darkMode = useSelector((state) => state.theme.darkMode);
   const navigate = useNavigate();
   const [cards, setCards] = useState([]);
@@ -23,7 +24,8 @@ const Dashboard = () => {
   const fetchCards = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:5000/api/auth/cards", {
+      // https://credit-card-be.onrender.com
+      const response = await fetch(`${apiUrl}/api/auth/cards`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await response.json();
@@ -39,7 +41,7 @@ const Dashboard = () => {
       setLoading(true);
       setError("");
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:5000/api/auth/card", {
+      const response = await fetch(`${apiUrl}/api/auth/card`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -59,7 +61,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     fetchCards();
-  }, []);
+  },);
 
   return (
     <div className={`min-h-screen ${darkMode ? "bg-black text-white" : "bg-white text-black"} transition-all`}>
